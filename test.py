@@ -1,24 +1,9 @@
-#!/usr/bin/python
-#coding: utf8
-__author__ = "cyber-punk"
-
+#!/usr/bin/env python
 import urllib
-import re
-
-
-
-
-url = "http://m.habrahabr.ru/"
-answ = urllib.urlopen(url)
-answ = answ.read()
-regexp = re.findall('class="t">(.*)</a>', answ)
-regexp2 = re.findall('<a href="(.*)" class="t"', answ)
-
-
-for i in xrange(len(regexp2)):
-	url = regexp2[i]
-	print url
-	answ = urllib.urlopen(url)
-	answ = answ.read()
-	regexp3 = re.findall('<div class="txt">(.*)</div>', answ)
-	print regexp3
+import html_parser
+page = urllib.urlopen('http://m.habrahabr.ru/post/147682/').read()
+A = html_parser.Parser()
+A.load(page)
+A.query('SELECT WORD @@content, WORD name FROM a')
+print A.value['@@content']
+print A.value['name']
