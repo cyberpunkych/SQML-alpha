@@ -11,6 +11,6 @@ Only SQL-like syntax. Nothing more ;)<br>
 How i can use it?
 =================
 
-It is very simple! Just look in test.py file ;)
+It is very simple! Just look in <b>test.py</b> file ;)
 
 
