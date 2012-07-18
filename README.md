@@ -26,20 +26,17 @@ Firstly you need to initialize the html_parser module:<br>
 </code>
 
 Next, you should load your webpage or html file:<br>
-<code>
-\>\>\>page = urllib.urlopen('http://habrahabr.ru/').read()<br>
+<code>\>\>\>page = urllib.urlopen('http://habrahabr.ru/').read()<br>
 \>\>\>
 </code>
 
 And then, load it in the module:<br>
-<code>
-\>\>\>A.load(page)<br>
+<code>\>\>\>A.load(page)<br>
 \>\>\>
 </code>
 
 Ok! And now you can make SQL-like requests to this source, and parse it:<br>
-<code>
-\>\>\>A.query("SELECT @class FROM a WHERE @class=='hub '")
+<code>\>\>\>A.query("SELECT @class FROM a WHERE @class=='hub '")
 \>\>\>A.value<br>
 {'class': ['hub ']}<br>
 \>\>\>A.value['class']<br>
