@@ -20,23 +20,23 @@ No! I need more instructions!
 Okay, let's start.
 
 Firstly you need to initialize the html_parser module:<br>
-<code>\>\>\>import html_parser<br>
+<code><br>\>\>\>import html_parser<br>
 \>\>\>A = html_parser.Parser()<br>
 \>\>\>
 </code>
 
 Next, you should load your webpage or html file:<br>
-<code>\>\>\>page = urllib.urlopen('http://habrahabr.ru/').read()<br>
+<code><br>\>\>\>page = urllib.urlopen('http://habrahabr.ru/').read()<br>
 \>\>\>
 </code>
 
 And then, load it in the module:<br>
-<code>\>\>\>A.load(page)<br>
+<code><br>\>\>\>A.load(page)<br>
 \>\>\>
 </code>
 
 Ok! And now you can make SQL-like requests to this source, and parse it:<br>
-<code>\>\>\>A.query("SELECT @class FROM a WHERE @class=='hub '")
+<code><br>\>\>\>A.query("SELECT @class FROM a WHERE @class=='hub '")<br>
 \>\>\>A.value<br>
 {'class': ['hub ']}<br>
 \>\>\>A.value['class']<br>
@@ -45,4 +45,16 @@ Ok! And now you can make SQL-like requests to this source, and parse it:<br>
 [['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '],
  ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub ']]<br>
 \>\>\>
+</code>
+
+
+More SQL-like examples:
+=======================
+
+<code><br>
+SELECT @@content FROM title // Get the text from "title" tag<br>
+SELECT @href FROM a // Get the "href" value from "a" tag<br>
+SELECT @@content, @href FROM a WHERE @class=='test-class' // Get text and "href" value from tag a, where class value is "test-class"<br>
+SELECT @id FROM input WHERE @maxlength>5 // Get "id" value from "input" tag, where "maxlength" value more than 5<br>
+SELECT @class FROM div WHERE len(@id)!=0 // Yes, you can use python functions for string in conditionals<br>
 </code>
