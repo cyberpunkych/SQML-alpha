@@ -22,31 +22,32 @@ Okay, let's start.
 Firstly you need to initialize the html_parser module:
 
 <code>
->>>import html_parser
->>>A = html_parser.Parser()
->>>
+\>\>\>import html_parser<br>
+\>\>\>A = html_parser.Parser()<br>
+\>\>\>
 </code>
 
 Next, you should load your webpage or html file:
 <code>
->>>page = urllib.urlopen('http://habrahabr.ru/').read()
->>>
+\>\>\>page = urllib.urlopen('http://habrahabr.ru/').read()<br>
+\>\>\>
 </code>
 
 And then, load it in the module:
 <code>
->>>A.load(page)
+\>\>\>A.load(page)<br>
+\>\>\>
 </code>
 
 Ok! And now you can make SQL-like requests to this source, and parse it:
 <code>
->>>A.query("SELECT @class FROM a WHERE @class=='hub '")
->>>A.value
-{'class': ['hub ']}
->>>A.value['class']
-['hub ']
->>>A.result
+\>\>\>A.query("SELECT @class FROM a WHERE @class=='hub '")
+\>\>\>A.value<br>
+{'class': ['hub ']}<br>
+\>\>\>A.value['class']<br>
+['hub ']<br>
+\>\>\>A.result<br>
 [['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '],
- ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub ']]
->>>
+ ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub ']]<br>
+\>\>\>
 </code>
