@@ -1,1 +1,1 @@
-#re.findall('<[^>]+>', strr) - get all html tags with attr | <.*?>
+#delete it
