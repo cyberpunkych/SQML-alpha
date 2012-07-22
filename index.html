@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Sqml-alpha by cyberpunkych</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/cyberpunkych/SQML-alpha">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/cyberpunkych/SQML-alpha/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/cyberpunkych/SQML-alpha/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Sqml-alpha</h1>
+          <p>SQML-alpha repository</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/cyberpunkych">cyberpunkych</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>SQML-alpha</h1>
+
+<p>SQML-alpha repository</p>
+
+<p>It will be the small module for python, which can help you to parse html data.<br>
+You can do than without regexp and other brainfucking things. <br>
+Only SQL-like syntax. Nothing more ;)<br></p>
+
+<h1>How i can use it?</h1>
+
+<p>It is very simple! Just look in <b>test.py</b> file ;)</p>
+
+<h1>No! I need more instructions!</h1>
+
+<p>Okay, let's start.</p>
+
+<p>Firstly you need to initialize the html_parser module:<br><code><br>&gt;&gt;&gt;import html_parser<br>
+&gt;&gt;&gt;A = html_parser.Parser()<br>
+&gt;&gt;&gt;
+</code></p>
+
+<p>Next, you should load your webpage or html file:<br><code><br>&gt;&gt;&gt;page = urllib.urlopen('<a href="http://habrahabr.ru/').read(">http://habrahabr.ru/').read(</a>)<br>
+&gt;&gt;&gt;
+</code></p>
+
+<p>And then, load it in the module:<br><code><br>&gt;&gt;&gt;A.load(page)<br>
+&gt;&gt;&gt;
+</code></p>
+
+<p>Ok! And now you can make SQL-like requests to this source, and parse it:<br><code><br>&gt;&gt;&gt;A.query("SELECT @class FROM a WHERE @class=='hub '")<br>
+&gt;&gt;&gt;A.value<br>
+{'class': ['hub ']}<br>
+&gt;&gt;&gt;A.value['class']<br>
+['hub ']<br>
+&gt;&gt;&gt;A.result<br>
+[['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '],
+ ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub '], ['hub ']]<br>
+&gt;&gt;&gt;
+</code></p>
+
+<h1>More SQL-like examples:</h1>
+
+<p><code><br>
+SELECT @@content FROM title // Get the text from "title" tag<br>
+SELECT @href FROM a // Get the "href" value from "a" tag<br>
+SELECT @@content, @href FROM a WHERE @class=='test-class' // Get text and "href" value from tag a, where class value is "test-class"<br>
+SELECT @id FROM input WHERE @maxlength&gt;5 // Get "id" value from "input" tag, where "maxlength" value more than 5<br>
+SELECT @class FROM div WHERE len(@id)!=0 // Yes, you can use python functions for string in conditionals<br></code></p>
+
+<h1>Questions?</h1>
+
+<p>You can ask me, or cyberguru007 anything about this project!</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+    
+  </body>
+</html>
