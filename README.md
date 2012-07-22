@@ -58,3 +58,8 @@ SELECT @@content, @href FROM a WHERE @class=='test-class' // Get text and "href"
 SELECT @id FROM input WHERE @maxlength>5 // Get "id" value from "input" tag, where "maxlength" value more than 5<br>
 SELECT @class FROM div WHERE len(@id)!=0 // Yes, you can use python functions for string in conditionals<br>
 </code>
+
+Questions?
+==========
+
+You can ask me, or cyberguru007 anything about this project!
