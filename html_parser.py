@@ -49,13 +49,10 @@ class Parser:
         t = re.findall('<(\w+)', self.text)
         t = list(set(t))
         self.tags = t
-    def query(self, query):
-        self.result = []
-        self.value = {}
-        cond = None
+    def _parse_query(self, query):
         query = query.strip()
         if (query == 'SHOW ALL TAGS'):
-            return self.tags
+            return 'SHOW ALL TAGS', None, None, None
         query = query.replace('@','_')
         m = re.search('SELECT (.+) FROM ([\S]+)(?: WHERE (.+))?', query)
         if (m != None):
@@ -67,6 +64,9 @@ class Parser:
                 error()
         else:
             error()
+        return 'SELECT', data, tag_name, cond
+
+    def _select_result(self, data, tag_name, cond):
         val = split(data,',')
         regexp = re.compile('<'+tag_name+'([^<>]*)>(?:(.*?)</'+tag_name+'>)?',re.DOTALL)
         parsed = regexp.findall(self.text)
@@ -96,3 +96,14 @@ class Parser:
             tmp = list(set(self.value[k]))
             tmp.sort()
             self.value[k] = tmp
+        return self.result
+
+    def query(self, query):
+        self.result = []
+        self.value = {}
+        query_type, data, tag_name, cond = self._parse_query(query)
+        if query_type == 'SELECT':
+            return self._select_result(data, tag_name, cond)
+        elif query_type == 'SHOW ALL TAGS':
+            return self.tags
+
